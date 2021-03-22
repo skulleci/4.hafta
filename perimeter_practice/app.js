@@ -13,6 +13,7 @@ class Cevree {
             return nokta;
         }
     }
+    
     cevre = () => {
 
         for (let i = 0; i <= noktalar.length; i++) {
@@ -25,9 +26,11 @@ class Cevree {
                 (Math.pow((noktalar[i+2].y - noktalar[i+1].y), 2)))) +
                  Math.sqrt((Math.pow((noktalar[i+3].x - noktalar[i].x), 2) + 
                 (Math.pow((noktalar[i+3].y - noktalar[i].y), 2))));
-
+                
+                console.log(noktalar);
                 return cevresi;
         }     
+        
     };
 }
 
@@ -36,9 +39,7 @@ let noktalar = [
     new Nokta(5 , 1), 
     new Nokta(5 , 4), 
     new Nokta(1 , 5)
-    
 ];
-console.log(noktalar);
 
 
 for (let i = 0; i < noktalar.length; i++) {
