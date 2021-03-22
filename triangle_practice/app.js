@@ -11,22 +11,19 @@ class Ucgen {
         this.nokta2 = nokta2;
         this.nokta3 = nokta3;
     }  
-    cevre = cevreHesap();
-    alan = alanHesap();
+    cevreHesap = () => {
+        const kenar1 = Math.sqrt((Math.pow((x2-x1),2)+(Math.pow((y2-y1),2))));
+        const kenar2 = Math.sqrt((Math.pow((x3-x1),2)+(Math.pow((y3-y1),2))));
+        const kenar3 = Math.sqrt((Math.pow((x3-x2),2)+(Math.pow((y3-y2),2))));
+        const cevre = kenar1+kenar2+kenar3;
+        return cevre;
+    };
+    alanHesap = () => {
+        const alan = (1/2)*((x1*y2+x2*y3+x3*y1) - (y1*x2+y2*x3+y3*x1));
+        return alan;
+    };
 }
 
-const alanHesap = () => {
-    const alan = (1/2)*((x1*y2+x2*y3+x3*y1) - (y1*x2+y2*x3+y3*x1));
-    return alan;
-};
-
-const cevreHesap = () => {
-    const kenar1 = Math.sqrt((Math.pow((x2-x1),2)+(Math.pow((y2-y1),2))));
-    const kenar2 = Math.sqrt((Math.pow((x3-x1),2)+(Math.pow((y3-y1),2))));
-    const kenar3 = Math.sqrt((Math.pow((x3-x2),2)+(Math.pow((y3-y2),2))));
-    const cevre = kenar1+kenar2+kenar3;
-    return cevre;
-};
 
 const nokta1 = new Nokta(1 , 1);
 const nokta2 = new Nokta(5 , 1);
@@ -40,5 +37,5 @@ const y3 = nokta3.y;
 
 const ucgen = new Ucgen(nokta1, nokta2, nokta3);
 
-console.log("Üçgenin Çevresi = "  + ucgen.cevre);
-console.log("Üçgenin Alanı = "  + ucgen.alan);
+console.log("Üçgenin Çevresi = "  + ucgen.cevreHesap());
+console.log("Üçgenin Alanı = "  + ucgen.alanHesap());
