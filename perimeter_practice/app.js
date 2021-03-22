@@ -6,39 +6,36 @@ class Nokta {
     }  
 }
 
-class Ucgen {
-    constructor(nokta1,nokta2,nokta3) {
-        this.nokta1 = nokta1;
-        this.nokta2 = nokta2;
-        this.nokta3 = nokta3;
+class Cevree {
+    constructor(nokta) {
+        for (let i = 0; i < nokta.length; i++) {
+            constructor.this.nokta[i] = nokta;
+            return nokta;
+        }
     }
-    cevre = cevreHesap();
+    cevre = () => {
+
+        const kenar1 = Math.sqrt((Math.pow((nokta2.x - nokta1.x), 2) + 
+            (Math.pow((nokta2.y - nokta1.y), 2))));
+        const kenar2 = Math.sqrt((Math.pow((nokta3.x - nokta1.x), 2) + 
+            (Math.pow((nokta3.y - nokta1.y), 2))));
+        const kenar3 = Math.sqrt((Math.pow((nokta3.x - nokta2.x), 2) + 
+            (Math.pow((nokta3.y - nokta2.y), 2))));
+        const kenar4 = Math.sqrt((Math.pow((nokta4.x - nokta1.x), 2) + 
+            (Math.pow((nokta4.y - nokta1.y), 2))));
+
+        const cevresi = kenar1 + kenar2 + kenar3 + kenar4;
+
+        return cevresi;
+    };
 }
 
-
-const cevreHesap = () => {
-    const kenar1 = Math.sqrt((Math.pow((x2-x1),2)+(Math.pow((y2-y1),2))));
-    const kenar2 = Math.sqrt((Math.pow((x3-x1),2)+(Math.pow((y3-y1),2))));
-    const kenar3 = Math.sqrt((Math.pow((x3-x2),2)+(Math.pow((y3-y2),2))));
-    const cevre = kenar1+kenar2+kenar3;
-    return cevre;
-};
 
 const nokta1 = new Nokta(1 , 1);
 const nokta2 = new Nokta(5 , 1);
 const nokta3 = new Nokta(5 , 4);
-const x1 = nokta1.x;
-const y1 = nokta1.y;
-const x2 = nokta2.x;
-const y2 = nokta2.y;
-const x3 = nokta3.x;
-const y3 = nokta3.y;
+const nokta4 = new Nokta(1 , 5);
 
-console.log(nokta1.constructor.length);
-console.log(nokta2);
-console.log(nokta3);
+const cevreHesaplama = new Cevree(nokta1, nokta2, nokta3, nokta4);
 
-
-const ucgen = new Ucgen(nokta1, nokta2, nokta3);
-
-console.log("Üçgenin Çevresi = "  + ucgen.cevre);
+console.log("Girilen Noktaların Çevresi = "  + cevreHesaplama.cevre());
