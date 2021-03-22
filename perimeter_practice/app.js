@@ -15,27 +15,40 @@ class Cevree {
     }
     cevre = () => {
 
-        const kenar1 = Math.sqrt((Math.pow((nokta2.x - nokta1.x), 2) + 
-            (Math.pow((nokta2.y - nokta1.y), 2))));
-        const kenar2 = Math.sqrt((Math.pow((nokta3.x - nokta1.x), 2) + 
-            (Math.pow((nokta3.y - nokta1.y), 2))));
-        const kenar3 = Math.sqrt((Math.pow((nokta3.x - nokta2.x), 2) + 
-            (Math.pow((nokta3.y - nokta2.y), 2))));
-        const kenar4 = Math.sqrt((Math.pow((nokta4.x - nokta1.x), 2) + 
-            (Math.pow((nokta4.y - nokta1.y), 2))));
+        for (let i = 0; i <= noktalar.length; i++) {
 
-        const cevresi = kenar1 + kenar2 + kenar3 + kenar4;
+            let cevresi = Math.sqrt((Math.pow((noktalar[i+1].x - noktalar[i].x), 2) + 
+                (Math.pow((noktalar[i+1].y - noktalar[i].y), 2)))) + 
+                 Math.sqrt((Math.pow((noktalar[i+2].x - noktalar[i].x), 2) + 
+                (Math.pow((noktalar[i+2].y - noktalar[i].y), 2)))) + 
+                 Math.sqrt((Math.pow((noktalar[i+2].x - noktalar[i+1].x), 2) + 
+                (Math.pow((noktalar[i+2].y - noktalar[i+1].y), 2)))) +
+                 Math.sqrt((Math.pow((noktalar[i+3].x - noktalar[i].x), 2) + 
+                (Math.pow((noktalar[i+3].y - noktalar[i].y), 2))));
 
-        return cevresi;
+                return cevresi;
+        }     
     };
 }
 
+let noktalar = [
+    new Nokta(1 , 1), 
+    new Nokta(5 , 1), 
+    new Nokta(5 , 4), 
+    new Nokta(1 , 5)
+    
+];
+console.log(noktalar);
 
-const nokta1 = new Nokta(1 , 1);
-const nokta2 = new Nokta(5 , 1);
-const nokta3 = new Nokta(5 , 4);
-const nokta4 = new Nokta(1 , 5);
 
-const cevreHesaplama = new Cevree(nokta1, nokta2, nokta3, nokta4);
+for (let i = 0; i < noktalar.length; i++) {
 
-console.log("Girilen Noktaların Çevresi = "  + cevreHesaplama.cevre());
+    let cevreHesaplama = new Cevree(noktalar[i]);
+
+    console.log("Girilen Noktaların Çevresi = "  + cevreHesaplama.cevre());
+
+    break;
+}
+
+
+
