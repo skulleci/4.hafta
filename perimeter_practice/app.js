@@ -18,19 +18,18 @@ class Cevree {
 
         for (let i = 0; i <= noktalar.length; i++) {
 
-            let cevresi = Math.sqrt((Math.pow((noktalar[i+1].x - noktalar[i].x), 2) + 
-                (Math.pow((noktalar[i+1].y - noktalar[i].y), 2)))) + 
-                 Math.sqrt((Math.pow((noktalar[i+2].x - noktalar[i].x), 2) + 
-                (Math.pow((noktalar[i+2].y - noktalar[i].y), 2)))) + 
-                 Math.sqrt((Math.pow((noktalar[i+2].x - noktalar[i+1].x), 2) + 
-                (Math.pow((noktalar[i+2].y - noktalar[i+1].y), 2)))) +
-                 Math.sqrt((Math.pow((noktalar[i+3].x - noktalar[i].x), 2) + 
-                (Math.pow((noktalar[i+3].y - noktalar[i].y), 2))));
-                
-                console.log(noktalar);
-                return cevresi;
-        }     
-        
+            let cevresi = Math.sqrt((Math.pow((noktalar[i + 1].x - noktalar[i].x), 2) +
+                (Math.pow((noktalar[i + 1].y - noktalar[i].y), 2)))) +
+                Math.sqrt((Math.pow((noktalar[i + 2].x - noktalar[i].x), 2) +
+                    (Math.pow((noktalar[i + 2].y - noktalar[i].y), 2)))) +
+                Math.sqrt((Math.pow((noktalar[i + 2].x - noktalar[i + 1].x), 2) +
+                    (Math.pow((noktalar[i + 2].y - noktalar[i + 1].y), 2)))) +
+                Math.sqrt((Math.pow((noktalar[i + 3].x - noktalar[i].x), 2) +
+                    (Math.pow((noktalar[i + 3].y - noktalar[i].y), 2))));
+
+            return cevresi;
+        }
+
     };
 }
 
@@ -41,15 +40,11 @@ let noktalar = [
     new Nokta(1 , 5)
 ];
 
+let cevreHesaplama = new Cevree(...noktalar);
 
-for (let i = 0; i < noktalar.length; i++) {
 
-    let cevreHesaplama = new Cevree(noktalar[i]);
+console.log("Girilen Noktaların Çevresi = "  + cevreHesaplama.cevre());
 
-    console.log("Girilen Noktaların Çevresi = "  + cevreHesaplama.cevre());
-
-    break;
-}
 
 
 
