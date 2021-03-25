@@ -19,12 +19,20 @@ class Cevree {
 
         let cevresi = 0;
  
-            for (let i = 0; i < noktalar.length; i++) {
+            for (let i = 0; i <= noktalar.length-1; i++) {
 
-            cevresi += Math.sqrt((Math.pow((noktalar[i+1].x - noktalar[i].x), 2) +
-                 (Math.pow((noktalar[i+1].y - noktalar[i].y), 2))));
-        }
-        return cevresi;
+                if (i==noktalar.length-1) {
+
+                    cevresi += Math.sqrt((Math.pow((noktalar[i].x - noktalar[0].x), 2) +
+                        (Math.pow((noktalar[i].y - noktalar[0].y), 2))));
+                                
+                } else {
+                    
+                    cevresi += Math.sqrt((Math.pow((noktalar[i+1].x - noktalar[i].x), 2) +
+                        (Math.pow((noktalar[i+1].y - noktalar[i].y), 2))));
+                }
+            }
+            return cevresi;
     };
 }
 
@@ -32,7 +40,7 @@ let noktalar = [
     new Nokta(1 , 1), 
     new Nokta(5 , 1), 
     new Nokta(5 , 4), 
-    new Nokta(1 , 5)
+    new Nokta(1 , 4)
 ];
 
 let cevreHesaplama = new Cevree(noktalar);
