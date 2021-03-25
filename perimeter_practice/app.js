@@ -16,20 +16,15 @@ class Cevree {
     
     cevre = () => {
 
-        for (let i = 0; i <= noktalar.length; i++) {
+        let cevresi = 0;
+ 
+            for (let i = 0; i < noktalar.length-1; i++) {
 
-            let cevresi = Math.sqrt((Math.pow((noktalar[i + 1].x - noktalar[i].x), 2) +
-                (Math.pow((noktalar[i + 1].y - noktalar[i].y), 2)))) +
-                Math.sqrt((Math.pow((noktalar[i + 2].x - noktalar[i].x), 2) +
-                    (Math.pow((noktalar[i + 2].y - noktalar[i].y), 2)))) +
-                Math.sqrt((Math.pow((noktalar[i + 2].x - noktalar[i + 1].x), 2) +
-                    (Math.pow((noktalar[i + 2].y - noktalar[i + 1].y), 2)))) +
-                Math.sqrt((Math.pow((noktalar[i + 3].x - noktalar[i].x), 2) +
-                    (Math.pow((noktalar[i + 3].y - noktalar[i].y), 2))));
-
-            return cevresi;
+            cevresi += Math.sqrt((Math.pow((noktalar[i+1].x - noktalar[i].x), 2) +
+                 (Math.pow((noktalar[i+1].y - noktalar[i].y), 2))));
+                 console.log(noktalar[i]);
         }
-
+        return cevresi;
     };
 }
 
@@ -41,7 +36,6 @@ let noktalar = [
 ];
 
 let cevreHesaplama = new Cevree(...noktalar);
-
 
 console.log("Girilen Noktaların Çevresi = "  + cevreHesaplama.cevre());
 
