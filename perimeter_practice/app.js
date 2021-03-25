@@ -7,10 +7,11 @@ class Nokta {
 }
 
 class Cevree {
-    constructor(nokta) {
-        for (let i = 0; i < nokta.length; i++) {
-            constructor.this.nokta[i] = nokta;
-            return nokta;
+    constructor(...noktalar) {
+        for (let i = 0; i < noktalar.length; i++) {
+
+            this.noktalar = noktalar[i];
+            console.log(noktalar[i]);
         }
     }
     
@@ -18,11 +19,10 @@ class Cevree {
 
         let cevresi = 0;
  
-            for (let i = 0; i < noktalar.length-1; i++) {
+            for (let i = 0; i < noktalar.length; i++) {
 
             cevresi += Math.sqrt((Math.pow((noktalar[i+1].x - noktalar[i].x), 2) +
                  (Math.pow((noktalar[i+1].y - noktalar[i].y), 2))));
-                 console.log(noktalar[i]);
         }
         return cevresi;
     };
@@ -35,7 +35,7 @@ let noktalar = [
     new Nokta(1 , 5)
 ];
 
-let cevreHesaplama = new Cevree(...noktalar);
+let cevreHesaplama = new Cevree(noktalar);
 
 console.log("Girilen Noktaların Çevresi = "  + cevreHesaplama.cevre());
 
