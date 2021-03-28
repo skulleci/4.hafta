@@ -21,7 +21,10 @@ class Cevree {
  
             for (let i = 0; i <= noktalar.length-1; i++) {
 
-                if (i==noktalar.length-1) {
+                if (noktalar.length == 2) {
+                    cevresi = Math.sqrt((Math.pow((noktalar[i].x - noktalar[0].x), 2) +
+                        (Math.pow((noktalar[i].y - noktalar[0].y), 2))));
+                } else if (i==noktalar.length-1) {
 
                     cevresi += Math.sqrt((Math.pow((noktalar[i].x - noktalar[0].x), 2) +
                         (Math.pow((noktalar[i].y - noktalar[0].y), 2))));
@@ -38,7 +41,7 @@ class Cevree {
 
 let noktalar = [
     new Nokta(1 , 1), 
-    new Nokta(5 , 1), 
+    new Nokta(5 , 1),
     new Nokta(5 , 4), 
     new Nokta(1 , 4)
 ];
