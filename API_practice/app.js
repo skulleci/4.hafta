@@ -26,13 +26,11 @@ selectButton.addEventListener("change", (event) => {
             li.id = data.id;
             li.innerHTML = data.title + " " + "Completed : " + data.completed;
             document.querySelector(".list-group").appendChild(li);
-            if(selectButton.value == onchange){
-                const liler = document.querySelector(".liler").removeChild(li.innerHTML);
-            }
+            
+            
         });
         
     });
-    selectButton.remove()
 });
 
 /*
