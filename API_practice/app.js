@@ -32,7 +32,7 @@ function setList() {
         data.forEach(todo => {
             li = document.createElement("li");
             li.setAttribute("id", todo.id);
-            li.innerHTML = `${todo.title} <br> Completed : ${todo.completed}`;
+            li.innerText = `${todo.title} <br> Completed : ${todo.completed}`;
             document.querySelector(".list-group").appendChild(li);
         });
     });
@@ -44,34 +44,12 @@ function clearList() {
     }
 }
 
-// function getRelevancy(value, searchTerm) {
-//     if(value === searchTerm) {
-//         return 2;
-//     } else if (value.startsWith(term)){
-//         return 1;
-//     } else if(value.includes(searchTerm)) {
-//         return 0;
-//     } else {
-//         return -1;
-//     }
-// }
-
-// function search() {
-//     searchBar.addEventListener('input', (event) => {
-//         let value = event.target.value;
-//         if (value && value.trim().lenght > 0) {
-//             value = value.trim().toLowerCase();
-//             setList(data.filter(todo => {
-//                 return todo.completed.includes(value);
-//             }).sort((a,b) => {
-//                 return getRelevancy(b.completed, value) - getRelevancy(a.completed, value);
-//             }));
-//         } else {
-//             clearList();
+// searchButton.addEventListener("click", () => {
+//     for (let index = 0; index < todosList.children.length; index++) {
+//         let searchText = todosList.children[index].innerText.search(searchBar.value);
+//         if (searchText < 0) {
+//             //todosList.removeChild(todosList.children[index]);
+//             console.log(searchText);
 //         }
-//     });
-// }
-
-// searchButton.addEventListener("click", (event) => {
-//     search(event);
+//     }
 // })
