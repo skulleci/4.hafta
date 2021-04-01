@@ -32,7 +32,7 @@ function setList() {
         data.forEach(todo => {
             li = document.createElement("li");
             li.setAttribute("id", todo.id);
-            li.innerHTML = todo.title + " " + "Completed : " + todo.completed;
+            li.innerHTML = `${todo.title} <br> Completed : ${todo.completed}`;
             document.querySelector(".list-group").appendChild(li);
         });
     });
