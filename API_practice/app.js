@@ -32,7 +32,7 @@ function setList() {
         data.forEach(todo => {
             li = document.createElement("li");
             li.setAttribute("id", todo.id);
-            li.innerText = `${todo.title} <br> Completed : ${todo.completed}`;
+            li.innerHTML = `${todo.title} <br> Completed : ${todo.completed}`;
             document.querySelector(".list-group").appendChild(li);
         });
     });
@@ -44,12 +44,17 @@ function clearList() {
     }
 }
 
+// let aramaText;
+
 // searchButton.addEventListener("click", () => {
-//     for (let index = 0; index < todosList.children.length; index++) {
-//         let searchText = todosList.children[index].innerText.search(searchBar.value);
-//         if (searchText < 0) {
-//             //todosList.removeChild(todosList.children[index]);
-//             console.log(searchText);
-//         }
-//     }
+//     searchBar.addEventListener("input", (event) => {  
+//         aramaText = event.target.value;
+//         console.log(aramaText);
+//     })
+//     // for (let index = 0; index < todosList.firstChild.length; index++) {
+//         console.log(e);
+//         // if (searchText < 0) {
+//         //     todosList.removeChild(todosList.firstChild[index]);
+//         // }
+    
 // })
