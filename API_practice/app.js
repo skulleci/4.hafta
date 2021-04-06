@@ -1,60 +1,59 @@
 let selectButton = document.querySelector("#selectButton");
 let todosList = document.querySelector(".list-group");
-let li = document.createElement("li");
 let searchBar = document.getElementById("searchBar");
-let searchButton = document.querySelector("#searchButton");
 
-const users = axios.get('https://jsonplaceholder.typicode.com/users/');
-users.then(response => {
-    return response.data;
-}).then(data => {
-    
+let userTodos = [];
+let searchStr = "";
+
+const getUsers = () => {
+    return axios.get('https://jsonplaceholder.typicode.com/users/'); 
+}
+
+const  getUserTodos = async (userId) => {
+    const todos = await axios.get(`https://jsonplaceholder.typicode.com/todos?userId=${userId}`);
+    userTodos = todos.data;
+    return todos;
+}
+
+const searchTodo = (str) => {
+    const temp = userTodos.filter(item => item.title.includes(str) == true);
+
+    makeList(temp);
+}
+
+const makeList = (data) => {
+    todosList.innerHTML = "";
+
+    data.forEach(todo => {
+        const li = document.createElement("li");
+        li.setAttribute("id", todo.id);
+        li.innerHTML = `${todo.title} <br> Completed : ${todo.completed}`;
+        document.querySelector(".list-group").appendChild(li);
+    });
+}
+
+searchBar.addEventListener('input', (e) => {
+    searchStr = e.target.value;
+    searchTodo(e.target.value);
+});
+
+window.addEventListener('load', async () => {
+    const { data } = await getUsers();
+
     data.forEach(user => {
-        const option = document.createElement("option");
-        option.value = user.id;
-        option.text = user.id + " - " + user.name; 
-        selectButton.appendChild(option);
-
+            const option = document.createElement("option");
+            option.value = user.id;
+            option.text = user.id + " - " + user.name; 
+            selectButton.appendChild(option);
     });
+    
+})
+
+selectButton.addEventListener("change", async (e) => {
+    const { data } = await getUserTodos(e.target.value);
+
+    makeList(data);
 });
 
-selectButton.addEventListener("change", (event) => {
-    clearList();
-    setList(event);
-    
-});
 
-function setList() {
-    let todos = axios.get(`https://jsonplaceholder.typicode.com/todos?userId=${event.target.value}`);
-    todos.then(response => {
-        return response.data;
-    }).then(data => {
-        data.forEach(todo => {
-            li = document.createElement("li");
-            li.setAttribute("id", todo.id);
-            li.innerHTML = `${todo.title} <br> Completed : ${todo.completed}`;
-            document.querySelector(".list-group").appendChild(li);
-        });
-    });
-}
 
-function clearList() {
-    while (todosList.firstChild) {
-        todosList.removeChild(todosList.firstChild);
-    }
-}
-
-// let aramaText;
-
-// searchButton.addEventListener("click", () => {
-//     searchBar.addEventListener("input", (event) => {  
-//         aramaText = event.target.value;
-//         console.log(aramaText);
-//     })
-//     // for (let index = 0; index < todosList.firstChild.length; index++) {
-//         console.log(e);
-//         // if (searchText < 0) {
-//         //     todosList.removeChild(todosList.firstChild[index]);
-//         // }
-    
-// })
